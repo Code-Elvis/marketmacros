@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MarketMacros">
+<meta name="application-name" content="MarketMacros">
+<meta name="theme-color" content="#070d14">
+<meta name="description" content="AI-powered futures & commodities intelligence terminal">
+<title>MarketMacros — Futures & Commodities Intelligence</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIk1hcmtldE1hY3JvcyIsICJzaG9ydF9uYW1lIjogIk1hcmtldE1hY3JvcyIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAic3RhcnRfdXJsIjogIi4vIiwgImJhY2tncm91bmRfY29sb3IiOiAiIzA3MGQxNCIsICJ0aGVtZV9jb2xvciI6ICIjMDcwZDE0IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0F4T1RJZ01Ua3lJajQ4WTJseVkyeGxJR040UFNJNU5pSWdZM2s5SWprMklpQnlQU0k1TmlJZ1ptbHNiRDBpSXpBM01HUXhOQ0l2UGp4amFYSmpiR1VnWTNnOUlqazJJaUJqZVQwaU9UWWlJSEk5SWprd0lpQm1hV3hzUFNKdWIyNWxJaUJ6ZEhKdmEyVTlJaU13TUdNNFpqQWlJSE4wY205clpTMTNhV1IwYUQwaU5DSXZQanh3YjJ4NVoyOXVJSEJ2YVc1MGN6MGlNVEUxTERJd0lEWTRMREV3TkNBNU9Dd3hNRFFnTnpZc01UY3lJREV6Tml3NE1pQXhNRFFzT0RJaUlHWnBiR3c5SWlNd01HTTRaakFpTHo0OEwzTjJaejQ9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48Y2lyY2xlIGN4PSI5NiIgY3k9Ijk2IiByPSI5NiIgZmlsbD0iIzA3MGQxNCIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjkwIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGM4ZjAiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5Z29uIHBvaW50cz0iMTE1LDIwIDY4LDEwNCA5OCwxMDQgNzYsMTcyIDEzNiw4MiAxMDQsODIiIGZpbGw9IiMwMGM4ZjAiLz48L3N2Zz4=">
+<link rel="apple-touch-startup-image" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48Y2lyY2xlIGN4PSI5NiIgY3k9Ijk2IiByPSI5NiIgZmlsbD0iIzA3MGQxNCIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjkwIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGM4ZjAiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5Z29uIHBvaW50cz0iMTE1LDIwIDY4LDEwNCA5OCwxMDQgNzYsMTcyIDEzNiw4MiAxMDQsODIiIGZpbGw9IiMwMGM4ZjAiLz48L3N2Zz4=">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── THEME TOKENS ─────────────────────────────── */
+  :root {
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --display: 'Syne', sans-serif;
+  }
+
+/* DARK (default) */
+[data-theme=“dark”] {
+–bg:          #070d14;
+–surface:     #0d1825;
+–surface2:    #111e2e;
+–border:      #1e3048;
+–accent:      #00c8f0;
+–accent2:     #00e887;
+–red:         #ff3d5a;
+–yellow:      #f5c400;
+–orange:      #ff8c00;
+–text:        #c8d8e8;
+–text-dim:    #6a8aaa;
+–text-bright: #eef4fa;
+–tag-bull-bg: rgba(0,232,135,0.15); –tag-bull-fg: #00e887; –tag-bull-bd: rgba(0,232,135,0.35);
+–tag-bear-bg: rgba(255,61,90,0.15); –tag-bear-fg: #ff3d5a; –tag-bear-bd: rgba(255,61,90,0.35);
+–tag-neu-bg:  rgba(245,196,0,0.12); –tag-neu-fg:  #f5c400; –tag-neu-bd:  rgba(245,196,0,0.30);
+–tag-cau-bg:  rgba(255,140,0,0.15); –tag-cau-fg:  #ff8c00; –tag-cau-bd:  rgba(255,140,0,0.35);
+–alert-bg:    rgba(245,196,0,0.07); –alert-bd:    rgba(245,196,0,0.22);
+–card-top:    linear-gradient(90deg,var(–accent),transparent);
+–scan-color:  rgba(0,200,240,0.013);
+}
+
+/* LIGHT */
+[data-theme=“light”] {
+–bg:          #f0f4f8;
+–surface:     #ffffff;
+–surface2:    #e8eef5;
+–border:      #c8d4e0;
+–accent:      #0070c0;
+–accent2:     #007a45;
+–red:         #c0001a;
+–yellow:      #8a6000;
+–orange:      #b85000;
+–text:        #1a2a3a;
+–text-dim:    #5a7080;
+–text-bright: #0a1520;
+–tag-bull-bg: #d4f0e2; –tag-bull-fg: #005a30; –tag-bull-bd: #8ecfb0;
+–tag-bear-bg: #fadddd; –tag-bear-fg: #900015; –tag-bear-bd: #e8a0a0;
+–tag-neu-bg:  #fef4cc; –tag-neu-fg:  #6a4800; –tag-neu-bd:  #d4b040;
+–tag-cau-bg:  #fde8cc; –tag-cau-fg:  #8a3a00; –tag-cau-bd:  #d49060;
+–alert-bg:    #fef9e0; –alert-bd:    #d4b040;
+–card-top:    linear-gradient(90deg,var(–accent),transparent);
+–scan-color:  transparent;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: var(–sans);
+min-height: 100vh;
+overflow-x: hidden;
+transition: background 0.3s, color 0.3s;
+}
+
+/* Scanline overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(–scan-color) 2px, var(–scan-color) 4px);
+pointer-events: none;
+z-index: 9999;
+}
+
+/* Corner decorations */
+.corner-deco {
+position: fixed;
+width: 60px; height: 60px;
+pointer-events: none;
+z-index: 100;
+}
+.corner-deco::before, .corner-deco::after {
+content: ‘’;
+position: absolute;
+background: var(–accent);
+}
+.corner-deco.tl { top: 16px; left: 16px; }
+.corner-deco.tl::before { width: 2px; height: 24px; top: 0; left: 0; }
+.corner-deco.tl::after  { width: 24px; height: 2px; top: 0; left: 0; }
+.corner-deco.br { bottom: 16px; right: 16px; }
+.corner-deco.br::before { width: 2px; height: 24px; bottom: 0; right: 0; }
+.corner-deco.br::after  { width: 24px; height: 2px; bottom: 0; right: 0; }
+
+.container {
+max-width: 1300px;
+margin: 0 auto;
+padding: 24px 24px 60px;
+}
+
+/* HEADER */
+header {
+border-bottom: 1px solid var(–border);
+padding-bottom: 20px;
+margin-bottom: 28px;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+.header-left h1 {
+font-family: var(–display);
+font-size: 28px;
+font-weight: 800;
+color: var(–text-bright);
+letter-spacing: -0.5px;
+line-height: 1;
+}
+
+.header-left h1 span {
+color: var(–accent);
+}
+
+.header-left .subtitle {
+font-family: var(–mono);
+font-size: 10px;
+color: var(–text-dim);
+letter-spacing: 3px;
+margin-top: 6px;
+text-transform: uppercase;
+}
+
+.header-right {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 6px;
+}
+
+.live-badge {
+display: flex;
+align-items: center;
+gap: 7px;
+font-family: var(–mono);
+font-size: 10px;
+color: var(–accent2);
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+
+.live-dot {
+width: 7px; height: 7px;
+border-radius: 50%;
+background: var(–accent2);
+animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+#current-date {
+font-family: var(–mono);
+font-size: 12px;
+color: var(–yellow);
+}
+
+/* CONTROLS */
+.controls {
+display: flex;
+gap: 12px;
+margin-bottom: 28px;
+flex-wrap: wrap;
+align-items: center;
+}
+
+.btn {
+font-family: var(–mono);
+font-size: 11px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+padding: 10px 20px;
+border: 1px solid var(–border);
+background: var(–surface);
+color: var(–text);
+cursor: pointer;
+transition: all 0.2s;
+position: relative;
+overflow: hidden;
+}
+
+.btn::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: var(–accent);
+opacity: 0;
+transition: opacity 0.2s;
+}
+
+.btn:hover { color: var(–bg); border-color: var(–accent); }
+.btn:hover::before { opacity: 1; }
+.btn span { position: relative; z-index: 1; }
+
+.btn.primary { background: var(–accent); color: var(–bg); border-color: var(–accent); font-weight: 700; }
+.btn.primary::before { background: white; }
+
+.event-input {
+flex: 1;
+min-width: 260px;
+background: var(–surface);
+border: 1px solid var(–border);
+color: var(–text-bright);
+padding: 10px 16px;
+font-family: var(–sans);
+font-size: 13px;
+outline: none;
+transition: border-color 0.2s;
+}
+
+.event-input:focus { border-color: var(–accent); }
+.event-input::placeholder { color: var(–text-dim); }
+
+/* STATUS BAR */
+#status-bar {
+font-family: var(–mono);
+font-size: 11px;
+color: var(–text-dim);
+padding: 8px 14px;
+background: var(–surface);
+border-left: 3px solid var(–accent);
+margin-bottom: 24px;
+min-height: 36px;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: all 0.3s;
+}
+
+#status-bar.loading { border-color: var(–yellow); color: var(–yellow); }
+#status-bar.done { border-color: var(–accent2); color: var(–accent2); }
+#status-bar.error { border-color: var(–red); color: var(–red); }
+
+.spinner {
+width: 14px; height: 14px;
+border: 2px solid currentColor;
+border-top-color: transparent;
+border-radius: 50%;
+animation: spin 0.7s linear infinite;
+flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* GRID LAYOUT */
+.grid-2 {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+.grid-3 {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* CARDS */
+.card {
+background: var(–surface);
+border: 1px solid var(–border);
+padding: 20px;
+position: relative;
+overflow: hidden;
+}
+
+.card::after {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: linear-gradient(90deg, var(–accent), transparent);
+}
+
+.card.full-width {
+grid-column: 1 / -1;
+}
+
+.card-label {
+font-family: var(–mono);
+font-size: 9px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–text-dim);
+margin-bottom: 14px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.card-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: var(–border);
+}
+
+/* MARKET TICKER */
+.ticker-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.ticker-item {
+background: var(–surface2);
+border: 1px solid var(–border);
+padding: 12px 14px;
+position: relative;
+cursor: default;
+}
+
+.ticker-name {
+font-family: var(–mono);
+font-size: 10px;
+color: var(–text-dim);
+letter-spacing: 1px;
+margin-bottom: 4px;
+}
+
+.ticker-price {
+font-family: var(–mono);
+font-size: 18px;
+font-weight: 700;
+color: var(–text-bright);
+line-height: 1;
+}
+
+.ticker-change {
+font-family: var(–mono);
+font-size: 10px;
+margin-top: 4px;
+}
+
+.ticker-change.up { color: var(–accent2); }
+.ticker-change.down { color: var(–red); }
+.ticker-change.flat { color: var(–text-dim); }
+
+.ticker-signal {
+position: absolute;
+top: 8px; right: 10px;
+font-size: 14px;
+}
+
+/* CONTENT SECTIONS */
+.section-block {
+margin-bottom: 20px;
+}
+
+.section-title {
+font-family: var(–display);
+font-size: 13px;
+font-weight: 700;
+color: var(–accent);
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 12px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
+}
+
+/* TABLE */
+.data-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 12px;
+}
+
+.data-table th {
+font-family: var(–mono);
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–text-dim);
+padding: 8px 10px;
+text-align: left;
+border-bottom: 1px solid var(–border);
+}
+
+.data-table td {
+padding: 10px 10px;
+border-bottom: 1px solid rgba(26,45,66,0.5);
+vertical-align: top;
+line-height: 1.5;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(0,212,255,0.03); }
+
+/* TAGS/BADGES */
+.badge {
+display: inline-block;
+font-family: var(–mono);
+font-size: 9px;
+letter-spacing: 1px;
+padding: 2px 7px;
+border-radius: 2px;
+font-weight: 700;
+}
+
+.badge.bull    { background: var(–tag-bull-bg); color: var(–tag-bull-fg); border: 1px solid var(–tag-bull-bd); }
+.badge.bear    { background: var(–tag-bear-bg); color: var(–tag-bear-fg); border: 1px solid var(–tag-bear-bd); }
+.badge.neutral { background: var(–tag-neu-bg);  color: var(–tag-neu-fg);  border: 1px solid var(–tag-neu-bd); }
+.badge.caution { background: var(–tag-cau-bg);  color: var(–tag-cau-fg);  border: 1px solid var(–tag-cau-bd); }
+.badge.high    { background: var(–tag-bear-bg); color: var(–tag-bear-fg); border: 1px solid var(–tag-bear-bd); }
+.badge.med     { background: var(–tag-neu-bg);  color: var(–tag-neu-fg);  border: 1px solid var(–tag-neu-bd); }
+.badge.low     { background: rgba(90,122,150,0.12); color: var(–text-dim); border: 1px solid rgba(90,122,150,0.2); }
+
+/* GAME PLAN */
+.game-plan-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+
+.plan-item {
+background: var(–surface2);
+border: 1px solid var(–border);
+padding: 12px 14px;
+border-left: 3px solid var(–border);
+}
+
+.plan-item.bull-item { border-left-color: var(–accent2); }
+.plan-item.bear-item { border-left-color: var(–red); }
+.plan-item.warn-item { border-left-color: var(–yellow); }
+.plan-item.info-item { border-left-color: var(–accent); }
+
+.plan-label {
+font-family: var(–mono);
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–text-dim);
+margin-bottom: 6px;
+}
+
+.plan-value {
+font-size: 13px;
+color: var(–text-bright);
+line-height: 1.5;
+font-weight: 500;
+}
+
+/* ALERT FLASH */
+.market-alert {
+background: var(–alert-bg);
+border: 1px solid var(–alert-bd);
+border-left: 4px solid var(–yellow);
+padding: 14px 16px;
+margin-bottom: 12px;
+animation: alertPop 0.4s ease;
+}
+
+@keyframes alertPop {
+from { opacity: 0; transform: translateY(-6px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.alert-title {
+font-family: var(–mono);
+font-size: 10px;
+letter-spacing: 2px;
+color: var(–accent);
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+
+.alert-body {
+font-size: 13px;
+color: var(–text-bright);
+line-height: 1.6;
+}
+
+/* AI ANALYSIS */
+.ai-block {
+background: var(–surface2);
+border: 1px solid var(–border);
+padding: 18px;
+font-size: 13px;
+line-height: 1.8;
+color: var(–text);
+white-space: pre-wrap;
+position: relative;
+}
+
+.ai-block::before {
+content: ‘AI ANALYSIS’;
+display: block;
+font-family: var(–mono);
+font-size: 9px;
+letter-spacing: 3px;
+color: var(–accent);
+margin-bottom: 12px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
+}
+
+/* EMPTY STATE */
+.empty {
+text-align: center;
+padding: 40px 20px;
+color: var(–text-dim);
+font-family: var(–mono);
+font-size: 11px;
+letter-spacing: 2px;
+}
+
+.empty .icon { font-size: 28px; margin-bottom: 10px; opacity: 0.4; }
+
+/* FOOTER */
+footer {
+margin-top: 40px;
+padding-top: 20px;
+border-top: 1px solid var(–border);
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+footer span {
+font-family: var(–mono);
+font-size: 10px;
+color: var(–text-dim);
+letter-spacing: 1px;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(–bg); }
+::-webkit-scrollbar-thumb { background: var(–border); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(–accent); }
+
+.number-up { color: var(–accent2); }
+.number-down { color: var(–red); }
+
+.section-mb { margin-bottom: 28px; }
+
+/* OPTIONS FLOW MODULE */
+.gex-bar-wrap { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.gex-label { font-family:var(–mono); font-size:9px; color:var(–text-dim); letter-spacing:1px; width:100px; flex-shrink:0; text-align:right; }
+.gex-bar-track { flex:1; height:10px; background:var(–surface2); border:1px solid var(–border); position:relative; overflow:hidden; }
+.gex-bar-fill { position:absolute; top:0; height:100%; transition:width 0.6s ease; }
+.gex-bar-fill.pos { background:linear-gradient(90deg,var(–accent2),rgba(0,255,157,0.3)); left:0; }
+.gex-bar-fill.neg { background:linear-gradient(270deg,var(–red),rgba(255,69,96,0.3)); right:0; }
+.gex-val { font-family:var(–mono); font-size:10px; width:80px; flex-shrink:0; }
+
+.strike-level { display:flex; align-items:center; gap:8px; padding:7px 10px; border-bottom:1px solid rgba(26,45,66,0.5); font-size:11px; }
+.strike-level:last-child { border-bottom:none; }
+.strike-price { font-family:var(–mono); font-size:13px; font-weight:700; width:72px; flex-shrink:0; }
+.strike-type { font-family:var(–mono); font-size:9px; letter-spacing:1px; padding:2px 6px; flex-shrink:0; }
+.strike-type.call-wall  { background:rgba(255,69,96,0.15); color:var(–red); border:1px solid rgba(255,69,96,0.3); }
+.strike-type.put-wall   { background:rgba(0,255,157,0.12); color:var(–accent2); border:1px solid rgba(0,255,157,0.25); }
+.strike-type.gamma-flip { background:rgba(255,208,0,0.12); color:var(–yellow); border:1px solid rgba(255,208,0,0.3); }
+.strike-type.max-pain   { background:rgba(0,212,255,0.12); color:var(–accent); border:1px solid rgba(0,212,255,0.25); }
+.strike-type.pin-zone   { background:rgba(255,140,0,0.12); color:var(–orange); border:1px solid rgba(255,140,0,0.3); }
+
+.dealer-mode { padding:12px 14px; margin-bottom:10px; border-left:4px solid var(–border); background:var(–surface2); }
+.dealer-mode.long-gamma  { border-left-color:var(–accent2); }
+.dealer-mode.short-gamma { border-left-color:var(–red); }
+.dealer-mode.neutral     { border-left-color:var(–yellow); }
+.dealer-mode-title { font-family:var(–mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:5px; }
+.dealer-mode-body  { font-size:12px; color:var(–text); line-height:1.6; }
+
+.flow-signal-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+.flow-signal-item { background:var(–surface2); border:1px solid var(–border); padding:10px 12px; }
+.flow-signal-label { font-family:var(–mono); font-size:9px; color:var(–text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:5px; }
+.flow-signal-val { font-size:13px; font-weight:600; color:var(–text-bright); line-height:1.4; }
+
+.vol-chip { font-family:var(–mono); font-size:10px; padding:5px 10px; border:1px solid var(–border); background:var(–surface2); display:inline-block; margin:4px 4px 0 0; }
+.vol-chip span { display:block; font-size:9px; color:var(–text-dim); margin-bottom:2px; letter-spacing:1px; }
+
+.options-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:800px){ .options-grid { grid-template-columns:1fr; } }
+.options-sub-label { font-family:var(–mono); font-size:9px; letter-spacing:2px; color:var(–accent); text-transform:uppercase; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(–border); }
+
+/* THEME SWITCHER */
+.theme-bar {
+display: flex; align-items: center; gap: 6px;
+padding: 6px 10px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 2px;
+}
+.theme-bar-label {
+font-family: var(–mono); font-size: 9px; letter-spacing: 2px;
+color: var(–text-dim); text-transform: uppercase; margin-right: 4px;
+}
+.theme-btn {
+width: 28px; height: 28px; border: 2px solid var(–border);
+cursor: pointer; border-radius: 2px; position: relative;
+transition: border-color 0.2s, transform 0.15s;
+flex-shrink: 0;
+}
+.theme-btn:hover { transform: scale(1.12); border-color: var(–accent); }
+.theme-btn.active { border-color: var(–accent); box-shadow: 0 0 0 2px rgba(0,200,240,0.25); }
+.theme-btn[data-t=“dark”]     { background: linear-gradient(135deg,#070d14 50%,#00c8f0 50%); }
+.theme-btn[data-t=“light”]    { background: linear-gradient(135deg,#f0f4f8 50%,#0070c0 50%); }
+.theme-tooltip {
+position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+background: var(–surface2); border: 1px solid var(–border);
+color: var(–text-bright); font-family: var(–mono); font-size: 8px;
+letter-spacing: 1px; padding: 3px 6px; white-space: nowrap;
+opacity: 0; pointer-events: none; transition: opacity 0.15s;
+}
+.theme-btn:hover .theme-tooltip { opacity: 1; }
+
+/* ── MOBILE / PWA OPTIMISATIONS ────────────────── */
+@supports (padding-top: env(safe-area-inset-top)) {
+.container {
+padding-top: max(24px, env(safe-area-inset-top));
+padding-bottom: max(60px, env(safe-area-inset-bottom));
+padding-left: max(16px, env(safe-area-inset-left));
+padding-right: max(16px, env(safe-area-inset-right));
+}
+}
+
+@media (max-width: 600px) {
+.container { padding: 16px 12px 80px; }
+header { flex-direction: column; align-items: flex-start; gap: 10px; }
+.header-left h1 { font-size: 22px; }
+.theme-bar { flex-wrap: wrap; }
+.controls { gap: 8px; }
+.controls > div { flex-direction: column !important; }
+.event-input { font-size: 16px !important; } /* prevent iOS zoom */
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+.game-plan-grid { grid-template-columns: 1fr; }
+.options-grid { grid-template-columns: 1fr; }
+.flow-signal-grid { grid-template-columns: 1fr; }
+.ticker-grid { grid-template-columns: 1fr 1fr; }
+.data-table { font-size: 11px; }
+.data-table th { font-size: 8px; padding: 6px 6px; }
+.data-table td { padding: 8px 6px; }
+}
+
+/* Bottom nav bar for mobile */
+.mobile-nav {
+display: none;
+position: fixed;
+bottom: 0; left: 0; right: 0;
+background: var(–surface);
+border-top: 1px solid var(–border);
+padding: 8px 0;
+padding-bottom: max(8px, env(safe-area-inset-bottom));
+z-index: 1000;
+justify-content: space-around;
+align-items: center;
+}
+@media (max-width: 600px) { .mobile-nav { display: flex; } }
+
+.nav-item {
+display: flex; flex-direction: column; align-items: center; gap: 2px;
+cursor: pointer; padding: 4px 12px; border-radius: 4px;
+transition: background 0.15s;
+background: none; border: none; color: var(–text-dim);
+}
+.nav-item.active { color: var(–accent); }
+.nav-item:active { background: var(–surface2); }
+.nav-icon { font-size: 18px; line-height: 1; }
+.nav-label { font-family: var(–mono); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Section scroll targets */
+.scroll-section { scroll-margin-top: 12px; }
+
+/* Pull-to-refresh indicator */
+.ptr-indicator {
+text-align: center;
+padding: 10px;
+font-family: var(–mono);
+font-size: 10px;
+color: var(–accent);
+letter-spacing: 2px;
+display: none;
+}
+
+/* Loading skeleton pulse */
+@keyframes skeleton {
+0%, 100% { opacity: 0.4; }
+50% { opacity: 0.8; }
+}
+.skeleton {
+background: var(–border);
+border-radius: 2px;
+animation: skeleton 1.5s ease infinite;
+}
+
+/* Install banner */
+#install-banner {
+display: none;
+position: fixed;
+bottom: env(safe-area-inset-bottom, 0);
+left: 0; right: 0;
+background: var(–accent);
+color: var(–bg);
+padding: 14px 20px;
+z-index: 2000;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+font-family: var(–sans);
+}
+#install-banner.show { display: flex; }
+.install-text { font-size: 13px; font-weight: 600; flex: 1; }
+.install-sub  { font-size: 11px; opacity: 0.8; }
+.install-btn  {
+background: var(–bg); color: var(–accent);
+border: none; padding: 8px 16px; cursor: pointer;
+font-family: var(–mono); font-size: 11px; letter-spacing: 1px;
+font-weight: 700; white-space: nowrap;
+flex-shrink: 0;
+}
+.install-close {
+background: none; border: none; color: var(–bg);
+font-size: 20px; cursor: pointer; padding: 0 4px; flex-shrink: 0;
+}
+</style>
+
+</head>
+<body>
+<script>
+  // Force theme immediately before any rendering
+  (function(){
+    let t = 'dark';
+    try { t = localStorage.getItem('marketmacros-theme') || 'dark'; } catch(e) {}
+    if (t === 'auto') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+
+<div class="corner-deco tl"></div>
+<div class="corner-deco br"></div>
+
+<div class="container">
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="header-left">
+      <h1>MARKET<span>MACROS</span></h1>
+      <div class="subtitle">Futures &amp; Commodities Intelligence Terminal</div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge"><div class="live-dot"></div> LIVE AI POWERED</div>
+      <div id="current-date">Loading...</div>
+      <div class="theme-bar">
+        <span class="theme-bar-label">Theme</span>
+        <button class="theme-btn active" data-t="dark"  onclick="setTheme('dark')"  title="Dark"><div class="theme-tooltip">DARK</div></button>
+        <button class="theme-btn"        data-t="light" onclick="setTheme('light')" title="Light"><div class="theme-tooltip">LIGHT</div></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+
+  <div class="controls" style="flex-direction:column;gap:10px">
+    <!-- API KEY ROW -->
+    <div style="display:flex;gap:10px;align-items:center;width:100%;flex-wrap:wrap;margin-bottom:4px">
+      <div style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:200px">
+        <label style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:2px">🔑 ANTHROPIC API KEY (required)</label>
+        <input class="event-input" id="api-key-input" type="password"
+          placeholder="sk-ant-api03-..."
+          style="font-size:13px;letter-spacing:1px"
+          oninput="saveApiKey(this.value)" />
+      </div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);line-height:1.6;padding-bottom:2px">
+        Get yours at<br><span style="color:var(--accent)">console.anthropic.com</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%">
+      <button class="btn primary" onclick="generateFullBrief()"><span>⚡ Generate Full Brief</span></button>
+      <button class="btn" onclick="testApiConnection()" style="border-color:var(--yellow);color:var(--yellow)"><span>🔧 Test API</span></button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:2px">ES PRICE</label>
+          <input class="event-input" id="es-price" type="number" placeholder="e.g. 6085" style="width:120px;padding:8px 10px" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:2px">NQ PRICE</label>
+          <input class="event-input" id="nq-price" type="number" placeholder="e.g. 21450" style="width:130px;padding:8px 10px" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:2px">CL PRICE</label>
+          <input class="event-input" id="cl-price" type="number" placeholder="e.g. 70.50" style="width:110px;padding:8px 10px" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:2px">GC PRICE</label>
+          <input class="event-input" id="gc-price" type="number" placeholder="e.g. 2940" style="width:110px;padding:8px 10px" />
+        </div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:1px;align-self:flex-end;padding-bottom:8px;line-height:1.5">
+          Enter current prices<br>for accurate levels ↑
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;width:100%">
+      <input class="event-input" id="event-input" type="text" style="flex:1"
+        placeholder="Describe a market event (e.g. 'Jobless claims 280K vs 215K expected — what does this mean?')" />
+      <button class="btn" onclick="analyzeEvent()"><span>🔔 Analyze Event</span></button>
+    </div>
+  </div>
+
+  <!-- STATUS BAR -->
+
+  <div id="status-bar">
+    <span>◈ READY — Enter current prices then tap ⚡ Generate for LIVE data pulled fresh from the web right now "Generate Full Brief" for a fully anchored AI analysis. All strike levels will be calculated from your live prices.</span>
+  </div>
+
+  <!-- MARKET ALERTS ZONE -->
+
+  <div id="alerts-zone"></div>
+
+<!-- HOSTING WARNING -->
+
+<div id="hosting-warning" style="display:none;background:rgba(255,61,90,0.08);border:1px solid rgba(255,61,90,0.3);border-left:4px solid var(--red);padding:18px 20px;margin-bottom:20px">
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--red);margin-bottom:10px">⚠ WRONG HOSTING — API CALLS BLOCKED</div>
+  <div style="font-size:13px;color:var(--text-bright);margin-bottom:14px;line-height:1.6">
+    <strong>htmlpreview.github.io</strong> blocks outbound API requests. You need to deploy this file to a proper host. The easiest option takes under 2 minutes:
+  </div>
+  <div style="background:var(--surface2);padding:14px;border:1px solid var(--border);margin-bottom:10px">
+    <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:2px;margin-bottom:8px">OPTION 1 — NETLIFY DROP (FASTEST — 60 seconds)</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      1. Go to <span style="color:var(--accent)">netlify.com/drop</span> on your phone<br>
+      2. Download the <strong>PMB_Terminal.html</strong> file to your Files app<br>
+      3. Rename it to <strong>index.html</strong><br>
+      4. Drag it onto the Netlify Drop page<br>
+      5. You get a live URL instantly — add that to your home screen
+    </div>
+  </div>
+  <div style="background:var(--surface2);padding:14px;border:1px solid var(--border)">
+    <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:2px;margin-bottom:8px">OPTION 2 — GITHUB PAGES</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.8">
+      1. Go to your GitHub repo → Settings → Pages<br>
+      2. Set Source to <strong>main branch / root</strong><br>
+      3. Your file must be named <strong>index.html</strong> in the repo root<br>
+      4. GitHub gives you a <span style="color:var(--accent)">username.github.io/repo</span> URL<br>
+      5. That URL works perfectly — add to iPhone home screen
+    </div>
+  </div>
+</div>
+
+  <!-- MACRO SNAPSHOT -->
+
+  <div id="sec-macro" class="scroll-section">
+  <div class="card section-mb" id="macro-card">
+    <div class="card-label">🌍 Macro Snapshot</div>
+    <div id="macro-content">
+      <div class="empty"><div class="icon">📡</div>AWAITING DATA FEED</div>
+    </div>
+  </div>
+
+  </div>
+  <!-- WATCHLIST + CALENDAR -->
+  <div id="sec-watchlist" class="scroll-section">
+  <div class="grid-2 section-mb">
+    <div class="card">
+      <div class="card-label">🎯 Futures Watchlist &amp; Key Levels</div>
+      <div id="watchlist-content">
+        <div class="empty"><div class="icon">📊</div>AWAITING DATA FEED</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">📅 Economic Calendar &amp; Events</div>
+      <div id="calendar-content">
+        <div class="empty"><div class="icon">🗓</div>AWAITING DATA FEED</div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <!-- COT + NEWS -->
+  <div id="sec-cot" class="scroll-section">
+  <div class="grid-2 section-mb">
+    <div class="card">
+      <div class="card-label">📊 COT Report — Commitment of Traders</div>
+      <div id="cot-content">
+        <div class="empty"><div class="icon">📈</div>AWAITING DATA FEED</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">📰 Key News &amp; Sentiment</div>
+      <div id="news-content">
+        <div class="empty"><div class="icon">🗞</div>AWAITING DATA FEED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME PLAN -->
+
+  <div class="card section-mb">
+    <div class="card-label">🧠 Today's Game Plan &amp; Market Bias</div>
+    <div id="gameplan-content">
+      <div class="empty"><div class="icon">🎯</div>AWAITING DATA FEED</div>
+    </div>
+  </div>
+
+  </div>
+  <!-- OPTIONS FLOW MODULE -->
+  <div id="sec-options" class="scroll-section">
+  <div class="card section-mb">
+    <div class="card-label">⚡ Options Flow &amp; Dealer Positioning Intelligence</div>
+    <div id="options-flow-content">
+      <div class="empty"><div class="icon">🎰</div>AWAITING OPTIONS FLOW DATA</div>
+    </div>
+  </div>
+
+  </div>
+  <!-- AI MARKET OVERVIEW -->
+  <div id="sec-ai" class="scroll-section">
+  <div class="card section-mb">
+    <div class="card-label">🤖 AI Market Intelligence Overview</div>
+    <div id="ai-overview-content">
+      <div class="empty"><div class="icon">🤖</div>AWAITING AI ANALYSIS</div>
+    </div>
+  </div>
+
+<!-- MOBILE BOTTOM NAV -->
+
+<nav class="mobile-nav">
+  <button class="nav-item active" onclick="mobileNav('sec-macro', this)">
+    <span class="nav-icon">🌍</span><span class="nav-label">Macro</span>
+  </button>
+  <button class="nav-item" onclick="mobileNav('sec-watchlist', this)">
+    <span class="nav-icon">🎯</span><span class="nav-label">Watch</span>
+  </button>
+  <button class="nav-item" onclick="mobileNav('sec-cot', this)">
+    <span class="nav-icon">📊</span><span class="nav-label">COT</span>
+  </button>
+  <button class="nav-item" onclick="mobileNav('sec-options', this)">
+    <span class="nav-icon">⚡</span><span class="nav-label">Options</span>
+  </button>
+  <button class="nav-item" onclick="mobileNav('sec-ai', this)">
+    <span class="nav-icon">🤖</span><span class="nav-label">AI</span>
+  </button>
+</nav>
+
+  <footer>
+    <span>⚡ MarketMacros — Futures &amp; Commodities Terminal</span>
+    <span>Powered by Claude AI · Not financial advice · Always verify with live data</span>
+    <span id="last-updated">Last updated: —</span>
+  </footer>
+</div>
+
+<script>
+
+// ── THEME SYSTEM ──────────────────────────────────────────────────────────────
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function setTheme(theme) {
+  const resolved = theme === 'auto' ? getSystemTheme() : theme;
+  document.documentElement.setAttribute('data-theme', resolved);
+  // Update active button
+  document.querySelectorAll('.theme-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.t === theme);
+  });
+  try { localStorage.setItem('marketmacros-theme', theme); } catch(e) {}
+}
+
+function initTheme() {
+  let saved = 'dark';
+  try { saved = localStorage.getItem('marketmacros-theme') || 'dark'; } catch(e) {}
+  setTheme(saved);
+}
+
+// Watch for OS theme changes when in auto mode
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  try {
+    const saved = localStorage.getItem('marketmacros-theme');
+    if (saved === 'auto') setTheme('auto');
+  } catch(e) {}
+});
+
+initTheme();
+
+// ── API KEY MANAGEMENT ────────────────────────────────────────────────────────
+function saveApiKey(val) {
+  try { localStorage.setItem('marketmacros-apikey', val.trim()); } catch(e) {}
+}
+
+function getApiKey() {
+  // Check input field first, then localStorage
+  const field = document.getElementById('api-key-input');
+  if (field && field.value.trim()) return field.value.trim();
+  try { return localStorage.getItem('marketmacros-apikey') || ''; } catch(e) { return ''; }
+}
+
+// Load saved API key on startup
+(function loadSavedApiKey() {
+  try {
+    const saved = localStorage.getItem('marketmacros-apikey');
+    if (saved) {
+      const field = document.getElementById('api-key-input');
+      if (field) field.value = saved;
+    }
+  } catch(e) {}
+})();
+
+// Auto-generate brief if opening on a new trading day
+(function checkAutoGenerate() {
+  try {
+    // htmlpreview blocks API calls - user must use GitHub Pages
+    if (window.location.hostname === 'htmlpreview.github.io') {
+      setTimeout(() => {
+        setStatus('⚠ You are viewing this on htmlpreview which blocks API calls. You need to use GitHub Pages instead — github.com → your repo → Settings → Pages → Enable.', 'error');
+      }, 500);
+      return;
+    }
+    const lastGen = localStorage.getItem('marketmacros-lastgen');
+    const today = new Date().toDateString();
+    const hour  = new Date().getHours();
+    if ((!lastGen || lastGen !== today) && hour >= 4 && hour <= 14) {
+      setTimeout(() => {
+        setStatus('◈ NEW SESSION DETECTED — Enter your prices above then tap ⚡ Generate Full Brief for live market data.', '');
+      }, 1500);
+    }
+  } catch(e) {}
+})();
+
+// ── UTILITIES ──────────────────────────────────────────────────────────────────
+function setStatus(msg, type='') {
+  const bar = document.getElementById('status-bar');
+  bar.className = type ? `loading ${type}` : '';
+  bar.innerHTML = type === 'loading'
+    ? `<div class="spinner"></div><span>${msg}</span>`
+    : `<span>${msg}</span>`;
+  if(type === 'done') bar.className = 'done';
+  if(type === 'error') bar.className = 'error';
+}
+
+function getDate() {
+  return new Date().toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+}
+
+function getPrices() {
+  const es = document.getElementById('es-price').value || null;
+  const nq = document.getElementById('nq-price').value || null;
+  const cl = document.getElementById('cl-price').value || null;
+  const gc = document.getElementById('gc-price').value || null;
+  const parts = [];
+  if (es) parts.push(`ES (S&P 500 Futures) is currently trading at ${es}`);
+  if (nq) parts.push(`NQ (Nasdaq Futures) is currently at ${nq}`);
+  if (cl) parts.push(`CL (Crude Oil) is at $${cl}`);
+  if (gc) parts.push(`GC (Gold) is at $${gc}`);
+  if (!parts.length) return 'No prices provided — use your best knowledge of current 2026 market levels (ES is above 6000, NQ above 21000, GC above 2800, CL near 68-72).';
+  return 'CURRENT LIVE PRICES (use these as anchors for ALL levels, strikes, support/resistance): ' + parts.join(', ') + '.';
+}
+
+function getTime() {
+  return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+document.getElementById('current-date').textContent = getDate();
+
+// ── CLAUDE API CALL ───────────────────────────────────────────────────────────
+function extractJSON(text) {
+  // Try direct parse first
+  try { return JSON.parse(text); } catch(e) {}
+  // Strip markdown code fences
+  let clean = text.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
+  try { return JSON.parse(clean); } catch(e) {}
+  // Extract first { ... } block
+  const start = clean.indexOf('{');
+  const end = clean.lastIndexOf('}');
+  if (start !== -1 && end !== -1) {
+    try { return JSON.parse(clean.slice(start, end + 1)); } catch(e) {}
+  }
+  // Try to fix common issues: trailing commas
+  const fixed = clean.replace(/,\s*([}\]])/g, '$1');
+  try { return JSON.parse(fixed); } catch(e) {}
+  throw new Error('Could not parse JSON from response');
+}
+
+async function callClaude(systemPrompt, userPrompt) {
+  const apiKey = getApiKey();
+  if (!apiKey) throw new Error('No API key set');
+
+  const body = {
+    model: "claude-sonnet-4-5",
+    max_tokens: 2000,
+    system: systemPrompt,
+    messages: [{ role: "user", content: userPrompt }]
+  };
+
+  let response;
+  try {
+    response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify(body)
+    });
+  } catch(networkErr) {
+    throw new Error('Network error — check internet connection: ' + networkErr.message);
+  }
+
+  const rawText = await response.text();
+
+  if (!response.ok) {
+    throw new Error('API ' + response.status + ': ' + rawText.slice(0, 300));
+  }
+
+  let data;
+  try { data = JSON.parse(rawText); }
+  catch(e) { throw new Error('Bad API response: ' + rawText.slice(0, 200)); }
+
+  if (!data.content || !data.content.length) {
+    throw new Error('Empty content from API. Stop reason: ' + data.stop_reason);
+  }
+
+  const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
+  if (!text.trim()) throw new Error('No text in response. Blocks: ' + JSON.stringify(data.content.map(b => b.type)));
+
+  return extractJSON(text);
+}
+
+async function callClaudeText(systemPrompt, userPrompt) {
+  const apiKey = getApiKey();
+  if (!apiKey) throw new Error('No API key set');
+
+  const body = {
+    model: "claude-sonnet-4-5",
+    max_tokens: 1500,
+    system: systemPrompt,
+    messages: [{ role: "user", content: userPrompt }]
+  };
+
+  let response;
+  try {
+    response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify(body)
+    });
+  } catch(networkErr) {
+    throw new Error('Network error: ' + networkErr.message);
+  }
+
+  const rawText = await response.text();
+  if (!response.ok) throw new Error('API ' + response.status + ': ' + rawText.slice(0, 300));
+
+  let data;
+  try { data = JSON.parse(rawText); }
+  catch(e) { throw new Error('Bad response: ' + rawText.slice(0, 200)); }
+
+  return data.content ? data.content.filter(b => b.type === 'text').map(b => b.text).join('') : '';
+}
+
+
+// ── BADGE HELPER ──────────────────────────────────────────────────────────────
+function badge(text) {
+  const t = (text||'').toLowerCase();
+  if(t.includes('bull')) return `<span class="badge bull">BULLISH</span>`;
+  if(t.includes('bear')) return `<span class="badge bear">BEARISH</span>`;
+  if(t.includes('caut')) return `<span class="badge caution">CAUTION</span>`;
+  if(t.includes('high')) return `<span class="badge high">HIGH</span>`;
+  if(t.includes('med')) return  `<span class="badge med">MEDIUM</span>`;
+  if(t.includes('low')) return  `<span class="badge low">LOW</span>`;
+  return `<span class="badge neutral">${text||'NEUTRAL'}</span>`;
+}
+
+// ── RENDER FUNCTIONS ──────────────────────────────────────────────────────────
+function renderMacro(data) {
+  if(!data||!data.length){ document.getElementById('macro-content').innerHTML='<div class="empty">No data</div>'; return; }
+  let html = `<div class="ticker-grid">`;
+  data.forEach(item => {
+    const dir = item.change && item.change.startsWith('-') ? 'down' : item.change && item.change !== '0' ? 'up' : 'flat';
+    const sig = (item.signal||'').toLowerCase();
+    const sigBadge = sig.includes('bull') ? '🟢' : sig.includes('bear') ? '🔴' : sig.includes('elev') ? '🟠' : '🟡';
+    html += `
+      <div class="ticker-item">
+        <div class="ticker-signal">${sigBadge}</div>
+        <div class="ticker-name">${item.name}</div>
+        <div class="ticker-price">${item.price||'—'}</div>
+        <div class="ticker-change ${dir}">${item.change||''} ${item.changePct||''}</div>
+      </div>`;
+  });
+  html += `</div>`;
+  document.getElementById('macro-content').innerHTML = html;
+}
+
+function renderWatchlist(data) {
+  if(!data||!data.length){ document.getElementById('watchlist-content').innerHTML='<div class="empty">No data</div>'; return; }
+  let html = `<table class="data-table">
+    <thead><tr><th>Contract</th><th>Bias</th><th>Support</th><th>Resist</th><th>Setup</th></tr></thead><tbody>`;
+  data.forEach(item => {
+    html += `<tr>
+      <td style="color:var(--text-bright);font-weight:600">${item.contract}</td>
+      <td>${badge(item.bias)}</td>
+      <td style="color:var(--accent2);font-family:var(--mono);font-size:11px">${item.support||'—'}</td>
+      <td style="color:var(--red);font-family:var(--mono);font-size:11px">${item.resistance||'—'}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${item.setup||'—'}</td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  // add trade ideas below
+  html += `<div style="margin-top:14px">`;
+  data.forEach(item => {
+    if(item.idea) html += `<div style="font-size:11px;padding:6px 0;border-bottom:1px solid var(--border);color:var(--text)">
+      <span style="color:var(--accent);font-family:var(--mono);font-size:9px">${item.contract}</span> — ${item.idea}</div>`;
+  });
+  html += `</div>`;
+  document.getElementById('watchlist-content').innerHTML = html;
+}
+
+function renderCalendar(data) {
+  if(!data||!data.length){ document.getElementById('calendar-content').innerHTML='<div class="empty">No data</div>'; return; }
+  let html = `<table class="data-table">
+    <thead><tr><th>Time (ET)</th><th>Event</th><th>Forecast</th><th>Impact</th></tr></thead><tbody>`;
+  data.forEach(item => {
+    html += `<tr>
+      <td style="font-family:var(--mono);font-size:10px;color:var(--yellow);white-space:nowrap">${item.time||'—'}</td>
+      <td style="color:var(--text-bright)">${item.event||'—'}</td>
+      <td style="font-family:var(--mono);font-size:10px">${item.forecast||'—'}</td>
+      <td>${badge(item.impact)}</td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  document.getElementById('calendar-content').innerHTML = html;
+}
+
+function renderCOT(data) {
+  if(!data||!data.length){ document.getElementById('cot-content').innerHTML='<div class="empty">No data</div>'; return; }
+  let html = `<table class="data-table">
+    <thead><tr><th>Contract</th><th>Net Spec</th><th>WoW</th><th>Signal</th></tr></thead><tbody>`;
+  data.forEach(item => {
+    const wowDir = (item.wowChange||'').startsWith('+') ? 'number-up' : (item.wowChange||'').startsWith('-') ? 'number-down' : '';
+    html += `<tr>
+      <td style="color:var(--text-bright);font-weight:600">${item.contract}</td>
+      <td style="font-family:var(--mono);font-size:11px">${item.netSpec||'—'}</td>
+      <td class="${wowDir}" style="font-family:var(--mono);font-size:11px">${item.wowChange||'—'}</td>
+      <td>${badge(item.signal)}</td>
+    </tr>
+    <tr><td colspan="4" style="font-size:11px;color:var(--text-dim);padding:4px 10px 10px;border-bottom:1px solid var(--border)">${item.interpretation||''}</td></tr>`;
+  });
+  html += `</tbody></table>`;
+  document.getElementById('cot-content').innerHTML = html;
+}
+
+function renderNews(data) {
+  if(!data||!data.length){ document.getElementById('news-content').innerHTML='<div class="empty">No data</div>'; return; }
+  let html = '';
+  data.forEach(item => {
+    const b = (item.bias||'').toLowerCase();
+    const col = b.includes('bull') ? 'var(--accent2)' : b.includes('bear') ? 'var(--red)' : 'var(--yellow)';
+    html += `<div style="padding:12px 0;border-bottom:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px">
+        <span style="font-size:12px;color:var(--text-bright);font-weight:500;line-height:1.4">${item.headline}</span>
+        <span style="flex-shrink:0">${badge(item.bias)}</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.5">${item.impact||''}</div>
+      <div style="margin-top:4px;font-family:var(--mono);font-size:9px;color:${col}">${item.contracts||''}</div>
+    </div>`;
+  });
+  document.getElementById('news-content').innerHTML = html;
+}
+
+function renderGamePlan(data) {
+  if(!data){ document.getElementById('gameplan-content').innerHTML='<div class="empty">No data</div>'; return; }
+  const items = [
+    { label:'Overall Market Bias', value: data.overallBias, cls: (data.overallBias||'').toLowerCase().includes('bull')?'bull-item':(data.overallBias||'').toLowerCase().includes('bear')?'bear-item':'warn-item' },
+    { label:'Primary Trade Idea', value: data.primaryTrade, cls:'bull-item' },
+    { label:'Secondary Trade Idea', value: data.secondaryTrade, cls:'info-item' },
+    { label:'Contracts to Avoid', value: data.avoid, cls:'bear-item' },
+    { label:'Key Risk Factor', value: data.keyRisk, cls:'warn-item' },
+    { label:'Session Focus', value: data.sessionFocus, cls:'info-item' },
+    { label:'Max Daily Loss Rule', value: data.maxLoss, cls:'warn-item' },
+    { label:'Mental Checklist', value: data.mentalCheck, cls:'info-item' },
+  ];
+  let html = `<div class="game-plan-grid">`;
+  items.forEach(item => {
+    html += `<div class="plan-item ${item.cls}">
+      <div class="plan-label">${item.label}</div>
+      <div class="plan-value">${item.value||'—'}</div>
+    </div>`;
+  });
+  html += `</div>`;
+  document.getElementById('gameplan-content').innerHTML = html;
+}
+
+
+function renderOptionsFlow(d) {
+  if (!d) { document.getElementById('options-flow-content').innerHTML = '<div class="empty">No data</div>'; return; }
+
+  // Dealer mode styling
+  const modeClass = d.dealerMode && d.dealerMode.toLowerCase().includes('long') ? 'long-gamma'
+    : d.dealerMode && d.dealerMode.toLowerCase().includes('short') ? 'short-gamma' : 'neutral';
+  const modeColor = modeClass === 'long-gamma' ? 'var(--accent2)' : modeClass === 'short-gamma' ? 'var(--red)' : 'var(--yellow)';
+  const modeIcon  = modeClass === 'long-gamma' ? '🟢' : modeClass === 'short-gamma' ? '🔴' : '🟡';
+
+  // GEX bars
+  const gexItems = d.gexByContract || [];
+  let gexHtml = '';
+  gexItems.forEach(g => {
+    const isPos = !String(g.gex||'').startsWith('-');
+    const pct   = Math.min(Math.abs(parseFloat(g.gexPct)||50), 100);
+    const col   = isPos ? 'var(--accent2)' : 'var(--red)';
+    gexHtml += `<div class="gex-bar-wrap">
+      <div class="gex-label">${g.contract}</div>
+      <div class="gex-bar-track">
+        <div class="gex-bar-fill ${isPos?'pos':'neg'}" style="width:${pct}%"></div>
+      </div>
+      <div class="gex-val" style="color:${col}">${g.gex} <span style="font-size:8px;color:var(--text-dim)">${g.regime||''}</span></div>
+    </div>`;
+  });
+
+  // Key strike levels
+  const strikes = d.keyStrikes || [];
+  let strikesHtml = '';
+  strikes.forEach(s => {
+    const typeClass = s.type === 'CALL WALL' ? 'call-wall'
+      : s.type === 'PUT WALL' ? 'put-wall'
+      : s.type === 'GAMMA FLIP' ? 'gamma-flip'
+      : s.type === 'MAX PAIN' ? 'max-pain' : 'pin-zone';
+    const priceCol = s.type === 'CALL WALL' ? 'var(--red)'
+      : s.type === 'PUT WALL' ? 'var(--accent2)'
+      : s.type === 'GAMMA FLIP' ? 'var(--yellow)' : 'var(--accent)';
+    strikesHtml += `<div class="strike-level">
+      <div class="strike-price" style="color:${priceCol}">${s.strike}</div>
+      <span class="strike-type ${typeClass}">${s.type}</span>
+      <div style="flex:1;font-size:11px;color:var(--text-dim)">${s.meaning}</div>
+    </div>`;
+  });
+
+  // Vanna / Charm
+  const vannaCharm = d.vannaCharm || {};
+
+  // Flow signals
+  const signals = d.flowSignals || {};
+
+  const html = `
+    <div class="options-grid">
+      <div>
+        <div class="options-sub-label">Dealer Positioning — Current Regime</div>
+        <div class="dealer-mode ${modeClass}">
+          <div class="dealer-mode-title" style="color:${modeColor}">${modeIcon} ${d.dealerMode || 'UNKNOWN'}</div>
+          <div class="dealer-mode-body">${d.dealerModeExplain || ''}</div>
+        </div>
+        <div class="options-sub-label" style="margin-top:14px">Gamma Exposure (GEX) by Market</div>
+        ${gexHtml || '<div style="color:var(--text-dim);font-size:11px">No GEX data</div>'}
+        <div class="options-sub-label" style="margin-top:14px">Vanna &amp; Charm Flows</div>
+        <div class="dealer-mode neutral" style="margin-bottom:0">
+          <div class="dealer-mode-title" style="color:var(--yellow)">🌊 VANNA</div>
+          <div class="dealer-mode-body">${vannaCharm.vanna || '—'}</div>
+        </div>
+        <div class="dealer-mode neutral" style="margin-top:8px;margin-bottom:0">
+          <div class="dealer-mode-title" style="color:var(--accent)">⏳ CHARM</div>
+          <div class="dealer-mode-body">${vannaCharm.charm || '—'}</div>
+        </div>
+      </div>
+      <div>
+        <div class="options-sub-label">Key Options Strike Levels (ES &amp; NQ)</div>
+        <div style="background:var(--surface2);border:1px solid var(--border)">
+          ${strikesHtml || '<div style="padding:14px;color:var(--text-dim);font-size:11px">No strike data</div>'}
+        </div>
+        <div class="options-sub-label" style="margin-top:14px">Actionable Flow Signals</div>
+        <div class="flow-signal-grid">
+          <div class="flow-signal-item" style="border-left:3px solid var(--red)">
+            <div class="flow-signal-label">Call Wall Resistance</div>
+            <div class="flow-signal-val">${signals.callWallAction || '—'}</div>
+          </div>
+          <div class="flow-signal-item" style="border-left:3px solid var(--accent2)">
+            <div class="flow-signal-label">Put Wall Support</div>
+            <div class="flow-signal-val">${signals.putWallAction || '—'}</div>
+          </div>
+          <div class="flow-signal-item" style="border-left:3px solid var(--yellow)">
+            <div class="flow-signal-label">Gamma Flip Trigger</div>
+            <div class="flow-signal-val">${signals.gammaFlipAction || '—'}</div>
+          </div>
+          <div class="flow-signal-item" style="border-left:3px solid var(--accent)">
+            <div class="flow-signal-label">0DTE / Expiry Impact</div>
+            <div class="flow-signal-val">${signals.zdteAction || '—'}</div>
+          </div>
+        </div>
+        <div class="options-sub-label" style="margin-top:14px">Implied Volatility Snapshot</div>
+        <div>
+          ${(d.ivSnapshot||[]).map(iv => `
+            <div class="vol-chip"><span>${iv.contract}</span>IV: ${iv.iv} &nbsp;|&nbsp; <span style="display:inline">Skew:</span> ${iv.skew}</div>
+          `).join('')}
+        </div>
+        <div style="margin-top:14px;background:var(--surface2);border:1px solid var(--border);border-left:4px solid var(--accent);padding:12px 14px">
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--accent);margin-bottom:6px">TRADER TAKEAWAY</div>
+          <div style="font-size:12px;color:var(--text-bright);line-height:1.7">${d.traderTakeaway || '—'}</div>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById('options-flow-content').innerHTML = html;
+}
+
+function renderAIOverview(text) {
+  document.getElementById('ai-overview-content').innerHTML = `<div class="ai-block">${text}</div>`;
+}
+
+// ── MAIN BRIEF GENERATION ─────────────────────────────────────────────────────
+async function generateFullBrief() {
+  const today = getDate();
+  const prices = getPrices();
+
+  // Validate API key first
+  const apiKey = getApiKey();
+  if (!apiKey || !apiKey.startsWith('sk-ant')) {
+    setStatus('✗ API key required — enter your Anthropic API key above (starts with sk-ant-)', 'error');
+    document.getElementById('api-key-input').focus();
+    return;
+  }
+
+  const sys = `You are an elite futures & commodities day trading analyst. Today is ${today}.
+You have deep expertise in ES, NQ, CL, NG, GC, SI, HG, ZC, ZW, ZS futures, COT data, macro events, EIA reports.
+Use today's date to determine what day of the week it is, what events are likely scheduled, and what the current market regime is.
+The user has provided current live prices — use them as your anchor for ALL levels and analysis.
+OUTPUT RULE: Respond with ONLY a raw JSON object. No markdown, no backticks, no preamble. Start with { end with }.`;
+
+  // ── CALL 1: Macro + Watchlist + Calendar ──────────────────────────────────
+  setStatus('⚡ 1/4 — Searching live prices, calendar & market data...', 'loading');
+
+  const prompt1 = `Today is ${today}. ${prices}
+
+Generate pre-market intelligence for a futures day trader. Use today's date to know exactly what day/week it is and what economic events are realistically scheduled. Use the prices I gave you as your anchor — all support/resistance/levels must be near those prices.
+
+For the economic calendar: list the REAL events scheduled for ${today} based on the typical US economic release calendar (PCE, NFP, ISM, FOMC, EIA, jobless claims etc all have known release schedules). Be specific and accurate about what's actually due today.
+
+For macro prices: use the prices I provided and estimate realistic changes/signals based on current 2026 market conditions.
+
+Return ONLY this JSON — no markdown, no backticks, start immediately with {:
+{"macro":[{"name":"S&P 500 Futures (ES)","price":"USE_MY_PRICE","change":"","changePct":"","signal":""},{"name":"Nasdaq Futures (NQ)","price":"USE_MY_PRICE","change":"","changePct":"","signal":""},{"name":"US Dollar Index (DXY)","price":"","change":"","changePct":"","signal":""},{"name":"10Y Treasury Yield","price":"","change":"","changePct":"","signal":""},{"name":"VIX Volatility","price":"","change":"","changePct":"","signal":""},{"name":"Crude Oil (CL)","price":"USE_MY_PRICE","change":"","changePct":"","signal":""},{"name":"Gold Futures (GC)","price":"USE_MY_PRICE","change":"","changePct":"","signal":""},{"name":"Copper (HG)","price":"","change":"","changePct":"","signal":""}],"watchlist":[{"contract":"Crude Oil (CL)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Natural Gas (NG)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Gold (GC)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Silver (SI)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Copper (HG)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Corn (ZC)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Wheat (ZW)","bias":"","support":"","resistance":"","setup":"","idea":""},{"contract":"Soybeans (ZS)","bias":"","support":"","resistance":"","setup":"","idea":""}],"calendar":[{"time":"","event":"","forecast":"","impact":""}]}
+
+Fill every field with real, specific data. Replace USE_MY_PRICE with the prices I gave you. Return ONLY the JSON.`;
+
+  try {
+    let d1;
+    try { d1 = await callClaude(sys, prompt1); }
+    catch(e) { throw new Error('Live data fetch failed — check your API key and internet connection. ' + e.message); }
+
+    renderMacro(d1.macro);
+    renderWatchlist(d1.watchlist);
+    renderCalendar(d1.calendar);
+
+    // ── CALL 2: COT + News + Game Plan ────────────────────────────────────
+    setStatus('⚡ 2/4 — Fetching COT report, live news & game plan...', 'loading');
+
+    const prompt2 = `Today is ${today}. ${prices}
+
+Generate COT report data, top market news, and a trading game plan for a futures day trader. 
+
+For COT data: use your knowledge of the most recent CFTC Commitments of Traders positioning. Provide realistic net speculative positions and week-over-week changes based on current 2026 market conditions for each contract.
+
+For news: generate 5 realistic, relevant market-moving headlines that a futures trader would care about TODAY — based on current geopolitical, macro, and commodity market conditions as of ${today}. Make them specific and plausible, not generic.
+
+For game plan: base it on the prices I gave you and today's market conditions.
+
+Return ONLY this JSON — no markdown, no backticks, start with {:
+{"cot":[{"contract":"Gold (GC)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Crude Oil (CL)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Natural Gas (NG)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Silver (SI)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Copper (HG)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Corn (ZC)","netSpec":"","wowChange":"","signal":"","interpretation":""},{"contract":"Soybeans (ZS)","netSpec":"","wowChange":"","signal":"","interpretation":""}],"news":[{"headline":"","bias":"","impact":"","contracts":""},{"headline":"","bias":"","impact":"","contracts":""},{"headline":"","bias":"","impact":"","contracts":""},{"headline":"","bias":"","impact":"","contracts":""},{"headline":"","bias":"","impact":"","contracts":""}],"gamePlan":{"overallBias":"","primaryTrade":"","secondaryTrade":"","avoid":"","keyRisk":"","sessionFocus":"","maxLoss":"Risk max 1-2% per trade. Set hard daily loss limit before session.","mentalCheck":"Rate mental clarity 1-10. Only trade above 7. Hit daily loss limit? STOP."}}
+
+Fill every field with specific, realistic data for ${today}. Return ONLY the JSON.`;
+
+    let d2;
+    try { d2 = await callClaude(sys, prompt2); }
+    catch(e) { throw new Error('COT/news fetch failed: ' + e.message); }
+
+    renderCOT(d2.cot);
+    renderNews(d2.news);
+    renderGamePlan(d2.gamePlan);
+
+    // ── CALL 3: Options Flow & Dealer Positioning ──────────────────────────
+    setStatus('⚡ 3/4 — Analyzing options flow & dealer positioning...', 'loading');
+
+    const optSys = `You are an options market structure expert. Today is ${today}.
+The user has provided current futures prices — use them as your anchor for ALL strike levels.
+Calculate realistic call wall, gamma flip, put wall, max pain and pin zone levels relative to these prices.
+OUTPUT RULE: Respond with ONLY a raw JSON object. No markdown, no backticks. Start with { end with }.`;
+
+    const optPrompt = `Today is ${today}. ${prices}
+
+Generate options market structure analysis for a futures day trader. ALL strike levels MUST be mathematically anchored to the prices I provided — calculate them relative to current price (e.g. if ES=${document.getElementById('es-price').value||'current'}, call wall is ~75pts above, gamma flip ~25pts below, put wall ~150pts below current).
+
+Return ONLY this JSON — no markdown, no backticks, start with {:
+{"dealerMode":"","dealerModeExplain":"","gexByContract":[{"contract":"ES (S&P 500)","gex":"","gexPct":"","regime":""},{"contract":"NQ (Nasdaq)","gex":"","gexPct":"","regime":""},{"contract":"GC (Gold)","gex":"","gexPct":"","regime":""},{"contract":"CL (Crude)","gex":"","gexPct":"","regime":""}],"keyStrikes":[{"strike":"CALCULATE_FROM_MY_ES_PRICE","type":"CALL WALL","meaning":""},{"strike":"","type":"GAMMA FLIP","meaning":""},{"strike":"","type":"PUT WALL","meaning":""},{"strike":"","type":"MAX PAIN","meaning":""},{"strike":"","type":"PIN ZONE","meaning":""}],"vannaCharm":{"vanna":"","charm":""},"flowSignals":{"callWallAction":"","putWallAction":"","gammaFlipAction":"","zdteAction":""},"ivSnapshot":[{"contract":"ES","iv":"","skew":""},{"contract":"NQ","iv":"","skew":""},{"contract":"GC","iv":"","skew":""},{"contract":"CL","iv":"","skew":""}],"traderTakeaway":""}
+
+Fill every field. Calculate strikes from my actual prices. Today is ${today} — use day-of-week to determine expiry proximity. Return ONLY the JSON.`;
+
+    let optData;
+    try { optData = await callClaude(optSys, optPrompt); }
+    catch(e) { throw new Error('Options data fetch failed: ' + e.message); }
+    renderOptionsFlow(optData);
+
+    // ── CALL 4: AI Narrative Overview ──────────────────────────────────────
+    setStatus('⚡ 4/4 — Generating AI market intelligence overview...', 'loading');
+
+    const overviewSys = `You are a senior futures trading desk analyst with live web search access. Today is ${today}. ${prices}
+Search the web for today's market conditions before writing your brief.
+Write in direct, professional trading desk style. Be specific with levels. No generic statements.`;
+
+    const overviewPrompt = `Today is ${today}. ${prices}
+
+Search for:
+- "market outlook today ${today} futures"
+- "pre-market analysis today commodities"
+- Any major breaking news affecting futures markets right now
+
+Then write a sharp 3-paragraph pre-market intelligence briefing covering:
+1. The macro backdrop RIGHT NOW and what it means specifically for commodity futures today
+2. The single biggest opportunity and the single biggest risk across CL, GC, NG, HG today — with specific price levels
+3. One concrete, actionable trade setup with entry trigger, stop, and target based on today's actual conditions
+
+Be specific. Use real levels from current prices. No filler. Write like you're briefing a trading desk at 8 AM.`;
+
+    let overview;
+    try { overview = await callClaudeText(overviewSys, overviewPrompt); }
+    catch(e) { overview = `Unable to generate AI overview — API error: ${e.message}. All other sections have loaded with live data.`; }
+
+    renderAIOverview(overview);
+    document.getElementById('last-updated').textContent = `Last updated: ${today} ${getTime()}`;
+    setStatus(`✓ MarketMacros brief complete — ${today} — All data live from web search.`, 'done');
+    try { localStorage.setItem('marketmacros-lastgen', new Date().toDateString()); } catch(e) {}
+
+  } catch(err) {
+    console.error('Brief generation error:', err);
+    setStatus(`✗ ${err.message}`, 'error');
+  }
+}
+
+
+// ── EVENT ANALYZER ────────────────────────────────────────────────────────────
+async function testApiConnection() {
+  const apiKey = getApiKey();
+  if (!apiKey || !apiKey.startsWith('sk-ant')) {
+    setStatus('✗ No valid API key — must start with sk-ant-', 'error');
+    return;
+  }
+  setStatus('🔧 Testing API connection...', 'loading');
+  try {
+    const result = await callClaude(
+      'You are a helpful assistant. Reply with only valid JSON.',
+      'Reply with exactly this JSON: {"status":"ok","message":"API connection working"}'
+    );
+    setStatus('✅ API connected! Response: ' + JSON.stringify(result), 'done');
+  } catch(e) {
+    setStatus('✗ API Test Failed: ' + e.message, 'error');
+  }
+}
+
+async function analyzeEvent() {
+  const input = document.getElementById('event-input').value.trim();
+  if (!input) {
+    setStatus('⚠ Please describe a market event in the input field first.', 'error');
+    return;
+  }
+  const apiKey = getApiKey();
+  if (!apiKey || !apiKey.startsWith('sk-ant')) {
+    setStatus('✗ API key required — enter your Anthropic API key in the field above.', 'error');
+    return;
+  }
+
+  setStatus(`🔔 Analyzing: "${input}"...`, 'loading');
+
+  const sys = `You are a senior futures & commodities market analyst. Today is ${getDate()}.
+CRITICAL: Respond with ONLY a raw JSON object. No markdown, no backticks, no text before or after. Start with { and end with }.`;
+
+  const prompt = `Market event: "${input}"
+
+Return ONLY this JSON structure (no backticks, no markdown):
+{"title":"short event title","surprise":"beat/miss/inline description","overallImpact":"BULLISH or BEARISH or MIXED","immediateReaction":"what happens in next 30-60 minutes in markets","contractImpacts":[{"contract":"CL","direction":"BULLISH or BEARISH or NEUTRAL","magnitude":"HIGH or MEDIUM or LOW","reasoning":"one sentence"},{"contract":"GC","direction":"BULLISH or BEARISH or NEUTRAL","magnitude":"HIGH or MEDIUM or LOW","reasoning":"one sentence"},{"contract":"ES","direction":"BULLISH or BEARISH or NEUTRAL","magnitude":"HIGH or MEDIUM or LOW","reasoning":"one sentence"}],"macroImplication":"2-3 sentences on broader market meaning","traderAction":"specific actionable step for a futures trader RIGHT NOW","watchLevel":"key price level on most affected contract","riskToThesis":"what could invalidate this analysis"}
+
+Fill in real analysis for the event: "${input}". Return ONLY the JSON.`;
+
+  try {
+    let data;
+    try {
+      data = await callClaude(sys, prompt);
+    } catch(apiErr) {
+      setStatus(`✗ Event analysis failed: ${apiErr.message} — Check API key & connection.`, 'error');
+      return;
+    }
+
+    // Build alert
+    const impactColor = data.overallImpact === 'BULLISH' ? 'var(--accent2)' : data.overallImpact === 'BEARISH' ? 'var(--red)' : 'var(--yellow)';
+    const alertBorderColor = data.overallImpact === 'BULLISH' ? 'rgba(0,255,157,0.25)' : data.overallImpact === 'BEARISH' ? 'rgba(255,69,96,0.25)' : 'rgba(255,208,0,0.25)';
+    const alertBgColor = data.overallImpact === 'BULLISH' ? 'rgba(0,255,157,0.05)' : data.overallImpact === 'BEARISH' ? 'rgba(255,69,96,0.05)' : 'rgba(255,208,0,0.05)';
+
+    let contractsHtml = '';
+    (data.contractImpacts||[]).forEach(c => {
+      const dir = c.direction === 'BULLISH' ? 'number-up' : c.direction === 'BEARISH' ? 'number-down' : '';
+      contractsHtml += `<span style="display:inline-block;margin:3px 6px 3px 0;font-family:var(--mono);font-size:10px">
+        <span class="${dir}">${c.contract}</span>
+        <span style="color:var(--text-dim)"> ${c.direction} (${c.magnitude})</span>
+      </span>`;
+    });
+
+    const alertHtml = `
+      <div class="market-alert" style="background:${alertBgColor};border-color:${alertBorderColor};border-left-color:${impactColor}">
+        <div class="alert-title">🔔 MARKET EVENT ALERT — ${data.title||input} <span style="float:right;font-size:10px">${getTime()}</span></div>
+        <div class="alert-body">
+          <div style="margin-bottom:8px"><strong style="color:${impactColor}">${data.overallImpact}</strong> — ${data.immediateReaction||''}</div>
+          <div style="margin-bottom:8px">${contractsHtml}</div>
+          <div style="font-size:12px;color:var(--text);margin-bottom:6px;line-height:1.6"><strong style="color:var(--text-bright)">📊 Macro Implication:</strong> ${data.macroImplication||''}</div>
+          <div style="font-size:12px;color:var(--text);margin-bottom:6px;line-height:1.6"><strong style="color:var(--yellow)">⚡ Trader Action:</strong> ${data.traderAction||''}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;font-size:11px">
+            <div style="background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--accent)"><span style="color:var(--text-dim);font-family:var(--mono);font-size:9px">WATCH LEVEL</span><br><span style="color:var(--accent);font-family:var(--mono)">${data.watchLevel||'—'}</span></div>
+            <div style="background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--red)"><span style="color:var(--text-dim);font-family:var(--mono);font-size:9px">RISK TO THESIS</span><br><span style="color:var(--text)">${data.riskToThesis||'—'}</span></div>
+          </div>
+        </div>
+      </div>`;
+
+    const zone = document.getElementById('alerts-zone');
+    zone.insertAdjacentHTML('afterbegin', alertHtml);
+
+    document.getElementById('event-input').value = '';
+    setStatus(`✓ Event analyzed — ${data.overallImpact} impact detected across ${(data.contractImpacts||[]).length} contracts.`, 'done');
+  } catch(err) {
+    console.error(err);
+    setStatus(`✗ Error analyzing event: ${err.message}`, 'error');
+  }
+}
+
+
+
+
+// ── PWA & MOBILE ──────────────────────────────────────────────────────────────
+// Service Worker registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swCode = atob('Y29uc3QgQ0FDSEU9J3BtYi12MSc7CmNvbnN0IFNIRUxMPVsnLi8nXTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJyxlPT57ZS53YWl0VW50aWwoY2FjaGVzLm9wZW4oQ0FDSEUpLnRoZW4oYz0+Yy5hZGRBbGwoU0hFTEwpKS50aGVuKCgpPT5zZWxmLnNraXBXYWl0aW5nKCkpKX0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2FjdGl2YXRlJyxlPT57ZS53YWl0VW50aWwoY2FjaGVzLmtleXMoKS50aGVuKGtleXM9PlByb21pc2UuYWxsKGtleXMuZmlsdGVyKGs9PmshPT1DQUNIRSkubWFwKGs9PmNhY2hlcy5kZWxldGUoaykpKSkudGhlbigoKT0+c2VsZi5jbGllbnRzLmNsYWltKCkpKX0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJyxlPT57CiAgY29uc3QgdXJsPW5ldyBVUkwoZS5yZXF1ZXN0LnVybCk7CiAgaWYoWydhcGkuYW50aHJvcGljLmNvbScsJ2ZvbnRzLmdvb2dsZWFwaXMuY29tJywnZm9udHMuZ3N0YXRpYy5jb20nXS5zb21lKGg9PnVybC5ob3N0bmFtZS5pbmNsdWRlcyhoKSkpewogICAgZS5yZXNwb25kV2l0aChmZXRjaChlLnJlcXVlc3QpLmNhdGNoKCgpPT5uZXcgUmVzcG9uc2UoJ3t9Jyx7aGVhZGVyczp7J0NvbnRlbnQtVHlwZSc6J2FwcGxpY2F0aW9uL2pzb24nfX0pKSk7CiAgICByZXR1cm47CiAgfQogIGUucmVzcG9uZFdpdGgoY2FjaGVzLm1hdGNoKGUucmVxdWVzdCkudGhlbihjYWNoZWQ9PmNhY2hlZHx8ZmV0Y2goZS5yZXF1ZXN0KSkpOwp9KTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdwdXNoJyxlPT57CiAgY29uc3QgZD1lLmRhdGE/ZS5kYXRhLmpzb24oKTp7fTsKICBlLndhaXRVbnRpbChzZWxmLnJlZ2lzdHJhdGlvbi5zaG93Tm90aWZpY2F0aW9uKGQudGl0bGV8fCfimqEgUHJlTWFya2V0IEFJIEJyaWVmJyx7Ym9keTpkLmJvZHl8fCdNYXJrZXRzIG9wZW4gc29vbi4gR2VuZXJhdGUgeW91ciBicmllZi4nLGljb246Jy4vaWNvbi0xOTIucG5nJyx0YWc6J3BtYi1tb3JuaW5nJ30pKTsKfSk7CnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignbm90aWZpY2F0aW9uY2xpY2snLGU9PntlLm5vdGlmaWNhdGlvbi5jbG9zZSgpO2Uud2FpdFVudGlsKGNsaWVudHMub3BlbldpbmRvdygnLi8nKSl9KTs=');
+    const blob = new Blob([swCode], {type: 'application/javascript'});
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl).catch(() => {});
+  });
+}
+
+// Install prompt (Android/Chrome)
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show banner after 3 seconds if not dismissed
+  setTimeout(() => {
+    try {
+      if (!localStorage.getItem('marketmacros-install-dismissed')) {
+        document.getElementById('install-banner').classList.add('show');
+      }
+    } catch(err) {}
+  }, 3000);
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      document.getElementById('install-banner').classList.remove('show');
+    });
+  }
+}
+
+function dismissInstall() {
+  document.getElementById('install-banner').classList.remove('show');
+  try { localStorage.setItem('marketmacros-install-dismissed', '1'); } catch(e) {}
+}
+
+// iOS Safari install hint
+function showiOSHint() {
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone;
+  const dismissed = (() => { try { return localStorage.getItem('marketmacros-ios-hint'); } catch(e) { return false; } })();
+  if (isIOS && !isStandalone && !dismissed) {
+    setTimeout(() => {
+      const hint = document.createElement('div');
+      hint.style.cssText = `
+        position:fixed; bottom:0; left:0; right:0; z-index:3000;
+        background:var(--surface); border-top:2px solid var(--accent);
+        padding:16px 20px; padding-bottom:max(16px,env(safe-area-inset-bottom));
+        font-family:var(--sans); text-align:center;
+      `;
+      hint.innerHTML = `
+        <div style="font-size:13px;font-weight:600;color:var(--text-bright);margin-bottom:6px">
+          📱 Add MarketMacros to your Home Screen
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px">
+          Tap <strong style="color:var(--accent)">Share ↑</strong> then <strong style="color:var(--accent)">"Add to Home Screen"</strong>
+        </div>
+        <button onclick="this.parentElement.remove();try{localStorage.setItem('marketmacros-ios-hint','1')}catch(e){}"
+          style="background:var(--accent);color:var(--bg);border:none;padding:8px 24px;
+          font-family:var(--mono);font-size:11px;letter-spacing:1px;cursor:pointer;font-weight:700">
+          GOT IT
+        </button>
+      `;
+      document.body.appendChild(hint);
+    }, 4000);
+  }
+}
+showiOSHint();
+
+// Mobile nav scroll
+function mobileNav(sectionId, btn) {
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const el = document.getElementById(sectionId);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Wake lock — keep screen on while brief is open (mobile)
+let wakeLock = null;
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch(e) {}
+}
+document.addEventListener('visibilitychange', async () => {
+  if (wakeLock !== null && document.visibilityState === 'visible') {
+    await requestWakeLock();
+  }
+});
+requestWakeLock();
+
+// Allow Enter key on input
+document.getElementById('event-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') analyzeEvent();
+});
+</script>
+
+</body>
+</html>
